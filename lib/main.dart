@@ -21,7 +21,7 @@ class MacroApp extends StatelessWidget {
   }
 }
 
-//check if text string has space, put %20 in between words
+// new page on clicking food with all info
 //if no results, show nothing showed up/add new food button (does nothing for now)
 // make food object so it can easily be shown
 //start on main page, statistics
