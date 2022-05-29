@@ -25,8 +25,7 @@ class _SearchScreenState extends State<SearchScreen> {
             TextField(
               //controller: textController,
               onSubmitted: (text) {
-                print(text);
-                foodData();
+                foodData(text);
                 // setState(() {
                 //   foodList = foodData();
                 // });
@@ -52,14 +51,18 @@ class _SearchScreenState extends State<SearchScreen> {
     ));
   }
 
-  foodData() async {
+  foodData(text) async {
+    //check if text string has space, put %20 in between words
+
+    //using own api key
     final response = await http.get(Uri.parse(
-        'https://api.nal.usda.gov/fdc/v1/foods/search?api_key=DEMO_KEY&query=Cheddar%20Cheese'));
+        'https://api.nal.usda.gov/fdc/v1/foods/search?api_key=tfBwCq9vhXCUm6Gsdb9haTW6CjAhqXri8Lg0P2Um&query=${text}'));
 
     if (response.statusCode == 200) {
       // If server returns an OK response, parse the JSON.
       var jsonResponse = json.decode(response.body) as Map<String, dynamic>;
       //print(jsonResponse['foods'].length); //length of 1 page = 50
+      foodList.clear();
 
       setState(() {
         foodList.addAll(jsonResponse['foods']);
