@@ -13,7 +13,6 @@ class MacroApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Named Routes Demo',
       initialRoute: SearchScreen.id,
       routes: {
         SearchScreen.id: (context) => const SearchScreen(),
