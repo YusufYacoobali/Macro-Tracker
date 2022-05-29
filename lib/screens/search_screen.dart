@@ -60,13 +60,11 @@ class _SearchScreenState extends State<SearchScreen> {
       // If server returns an OK response, parse the JSON.
       var jsonResponse = json.decode(response.body) as Map<String, dynamic>;
       //print(jsonResponse['foods'].length); //length of 1 page = 50
-      //print(jsonResponse['foods'][2]);
+
       setState(() {
-        foodList.add(jsonResponse['foods'][1]);
+        foodList.addAll(jsonResponse['foods']);
       });
-      //2015943
       //each food has a food num and food nutritents, food nutrients has nutrientid/name + amount for each nutrient
-      //return jsonResponse['foods'][0];
     } else {
       // If that response was not OK, throw an error.
       throw Exception('Failed to load post');
