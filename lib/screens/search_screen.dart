@@ -72,6 +72,8 @@ class _SearchScreenState extends State<SearchScreen> {
       print(jsonResponse['foods'].length); //length of 1 page = 50
       //foodList.clear();
 
+      makeFood(jsonResponse['foods']);
+
       setState(() {
         foodList.addAll(jsonResponse['foods']);
       });
@@ -83,4 +85,6 @@ class _SearchScreenState extends State<SearchScreen> {
       throw Exception('Failed to load post');
     }
   }
+
+  void makeFood(queryResults) {}
 }
